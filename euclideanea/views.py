@@ -12,9 +12,12 @@ def calculate(request):
             b = int(request.POST.get('b'))
         except (TypeError, ValueError):
             return render(request, 'euclidean/index.html', {'error': 'Please enter valid integers.'})
-        
-        r1 = max(a, b)
-        r2 = min(a, b)
+        if (abs(a) > abs(b)):
+            r1 = a
+            r2 = b
+        else:
+            r2 = a
+            r1 = b
 
         gcd, x, y, steps = extendedEA(r1, r2, 1, 0, 0, 1)
         context = {
