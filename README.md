@@ -1,8 +1,8 @@
-# Truth Table
-Truth Tables are fundamental in logic to evalulate equivalence of logical statements. I find the idea of constructing a truth table and evaluating every little component very tedious, hence I created a calculator.
+# Abstract Algebra Tools
+Primarily based off of UWaterloo's Math 135 curriculum, the app illustrates fundamental concepts like truth tables and the extended euclidean algorithm (GCD WR, GCD CT, Bezout's Lemma).
 
 ## Functions
-You can specify the amount of variables and input complex logical statements.
+You can specify the number of variables and input complex logical statements. Inputting numbers follows the same idea.
 The DOM auto-updates upon user input.
 
 ## Input Formats
