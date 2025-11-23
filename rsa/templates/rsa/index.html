@@ -1,1 +1,43 @@
-Hello
+{% load static %}
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>RSA Demo</title>
+        <link rel="stylesheet" href="{% static 'rsa/styles.css' %}">
+        <script src="{% static 'rsa/main.js' %}" defer></script>
+    </head>
+    <body data-max-input="{{ max_input }}">
+         <script>
+            const MAX_INPUT = parseInt(document.body.dataset.maxInput);
+            const RSA_GENERATE_URL = "{% url 'rsa-generate' %}";
+            const RSA_ENCRYPT_URL = "{% url 'rsa-encrypt' %}";
+            const RSA_DECRYPT_URL = "{% url 'rsa-decrypt' %}";
+        </script>
+        <h2>Key Generation</h2>
+        <label>Prime 1 <input id="p" type="number" min="2" max="{{ max_input }}"></label>
+        <label>Prime 2 <input id="q" type="number" min="2" max="{{ max_input }}"></label>
+        <button id="genBtn">Generate keys</button>
+
+        <div id="keyArea" style="display:none;">
+            <table>
+            <tr><th>n</th><td id="nVal"></td></tr>
+            <tr><th>m</th><td id="mVal"></td></tr>
+            <tr><th>e</th><td id="eVal"></td></tr>
+            <tr><th>d</th><td id="dVal"></td></tr>
+            </table>
+            <p>Public Key (<span id="pubE"></span>, <span id="pubN"></span>)</p>
+            <p>Private Key (<span id="privD"></span>, <span id="privN"></span>)</p>
+        </div>
+
+        <h2>Encryption</h2>
+        <label>Message <input id="M" type="number" min="0" max="{{ max_input }}"></label>
+        <button id="encBtn">Encrypt</button>
+        <p>Ciphertext <span id="CVal"></span></p>
+
+        <h2>Decryption</h2>
+        <label>Ciphertext <input id="C" type="number" min="0" max="{{ max_input }}"></label>
+        <button id="decBtn">Decrypt</button>
+        <p>Recovered Message <span id="RVal"></span></p>
+    </body>
+</html>
